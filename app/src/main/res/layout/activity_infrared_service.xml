@@ -10,11 +10,18 @@
         android:id="@+id/sendButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Send Signal!"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:onClick="irSend"
-        />
+        android:layout_marginTop="60dp" />
+
+        <TextView
+            android:id="@+id/displayTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:padding="60dp"
+            android:gravity="center"
+            android:textSize="25sp"/>
 
 </RelativeLayout>
