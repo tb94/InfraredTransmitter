@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.niu.csci.z1697841.infraredtransmitter.InfraredServiceActivity">
 
+    <ImageView
+        android:id="@+id/couchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/couch" />
+
+    <Button
+        android:id="@+id/rtlButton"
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/ltrButton"
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp" />
     <Button
         android:id="@+id/sendButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Send Signal!"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
-
-        <TextView
-            android:id="@+id/displayTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:padding="60dp"
-            android:gravity="center"
-            android:textSize="25sp"/>
+        android:layout_marginBottom="60dp"
+        android:enabled="false"
+        android:text="Send!" />
 
 </RelativeLayout>
