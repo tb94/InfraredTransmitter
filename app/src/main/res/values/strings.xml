@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Infrared Transmitter</string>
+    <string name="info_text">
+        \nThanks for checking out my app!\n
+        \nAre you half way through a movie and sick of missing the best parts because your friends aren\'t made out of glass?
+        Have you thrown something across the room to avoid getting up and walking over there?
+        Did you over throw and put that full can of beer through a window? Or was your friend distracted when they caught it with their face?
+        Avoid these issues, and more. Use technology to solve your problems instead.\n
+        \nTo get started, place your ice cold beer in one of the loading bays. Make sure it\'s not open!
+        Next, select the side of the couch that the beer is loaded on. The icon should be green on the same side of the couch as the beer.
+        Now you can safely send it to your buddy, whether they are ready or not.\n
+        \nEnjoy!\n
+        \n- Tim Bretz"
+    </string>
+    <string name="info_icon">\?</string>
+    <string name="send_button">Send!</string>
+    <string name="couch">Couch</string>
 </resources>
