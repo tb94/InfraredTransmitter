@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import static android.graphics.Color.BLUE;
@@ -22,6 +23,7 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
     Button sendBtn;
     Button rtlBtn;
     Button ltrBtn;
+    ImageView couch;
 
     Animation rtlAnimation;
     Animation ltrAnimation;
@@ -30,12 +32,8 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
     private boolean rtl = false;
     private int[] patternLEFT = {
             // 38400 Hz
-
             // collected from remote that came with IR receiver
-
-            // head
             8986, 4614,
-
             494, 646, 494, 650, 486, 642,
             522, 618, 522, 614, 490, 646, 498, 642,
             498, 638, 470, 1782, 490, 1754, 502, 1750,
@@ -48,12 +46,8 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
     };
     private int[] patternRIGHT = {
             // 38400 Hz
-
             // collected from remote that came with IR receiver
-
-            // head
             8986, 4614,
-
             494, 646, 494, 650, 486, 642,
             522, 618, 522, 614, 490, 646, 498, 642,
             498, 638, 470, 1782, 490, 1754, 502, 1750,
@@ -66,20 +60,13 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
     };
     /*
     * DOES NOT CURRENTLY WORK
-    *
-    *   potential reasons:
-    *       math was off
-    *       real world variables effected frequencies
-    *       wrong protocol
     */
     private int[] patternA = {
             // 38400 Hz
-
             // 9ms leading pulse burst (16 times the pulse burst length used for a logical data bit)
             //    http://techdocs.altium.com/display/FPGA/NEC+Infrared+Transmission+Protocol
 
             9000, 4500,
-
 
             // lead in burst
             // http://www.hifi-remote.com/infrared/IR-PWM.shtml
@@ -118,7 +105,6 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
 
             // lead out burst
             // 22, 1427
-
     };
 
 
@@ -132,6 +118,7 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
         sendBtn = findViewById(R.id.sendButton);
         ltrBtn = findViewById(R.id.ltrButton);
         rtlBtn = findViewById(R.id.rtlButton);
+        couch = findViewById(R.id.couchView);
         rtlBtn.setBackgroundColor(BLUE);
         ltrBtn.setBackgroundColor(BLUE);
         ltrAnimation = AnimationUtils.loadAnimation(InfraredServiceActivity.this, R.anim.ltr_anim);
@@ -160,10 +147,10 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendBtn.setEnabled(false);
+
                 if (!irManager.hasIrEmitter()) {
                     Toast.makeText(InfraredServiceActivity.this, "Device does not have IR capabilities", Toast.LENGTH_LONG).show();
-//                    return;
+                    return;
                 } else {
                     irManager.transmit(38400, patternLEFT);
                 }
@@ -184,7 +171,8 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
 
     @Override
     public void onAnimationStart(Animation animation) {
-
+        sendBtn.setEnabled(false);
+        couch.setImageAlpha(127);
     }
 
     @Override
@@ -193,6 +181,7 @@ public class InfraredServiceActivity extends Activity implements Animation.Anima
         rtlBtn.setVisibility(View.VISIBLE);
         ltrBtn.setBackgroundColor(BLUE);
         rtlBtn.setBackgroundColor(BLUE);
+        couch.setImageAlpha(255);
         ltr = false;
         rtl = false;
     }
